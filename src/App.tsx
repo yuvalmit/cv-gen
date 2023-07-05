@@ -1,25 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ItemsRequestProvider from "./utils/mock-client";
+import TreeViewer from "./components/tree-viewer";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+`
+const Header = styled.header`
+  padding: 20px;
+  font-size: 18px;
+`
+const Content = styled.div`
+  overflow: scroll;
+  padding-left: 20px;
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      <Header>
+        DB explorer
+      </Header>
+      <Content>
+        <ItemsRequestProvider>
+          <TreeViewer path='/'/>
+        </ItemsRequestProvider>
+      </Content>
+    </Wrapper>
   );
 }
 
